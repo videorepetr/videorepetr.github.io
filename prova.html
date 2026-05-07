@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Lotame SyncJS Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    h1 {
+      font-size: 20px;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Lotame User ID Sync Test</h1>
+<p>Captured IDs will appear below:</p>
+
+<pre id="output">Waiting for Lotame response...</pre>
+
+<script>
+  // Create Lotame config object
+  window._lotameConfig = {
+    clientId: 17906,
+
+    onTagReady: function(data) {
+      // Called after sync.js finishes
+      document.getElementById("output").textContent =
+        JSON.stringify(data, null, 2);
+    }
+  };
+
+  // Load Lotame Sync JS
+  (function() {
+    var script = document.createElement("script");
+    script.src = "https://tags.crwdcntrl.net/lt/c/17906/sync.min.js";
+    script.async = true;
+    document.head.appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
